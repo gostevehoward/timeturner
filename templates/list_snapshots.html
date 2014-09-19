@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+{{ timestamp|format_datetime }}
+<ul>
+  {% for hostname, titles in data_map.iteritems() %}
+    <li>
+      {{ hostname }}
+      <ul>
+        {% for title in titles %}
+          <li>
+            <a href="{{ urls.build('snapshot', {
+                            'date': timestamp.date().strftime('%Y%m%d'),
+                            'time': timestamp.time().strftime('%H%M'),
+                            'hostname': hostname, 'title': title
+                        }) }}">
+              {{ title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ol>
+{% endblock %}

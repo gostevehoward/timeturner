@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+{{ day|format_datetime('%Y-%m-%d') }}
+<ol>
+  {% for timestamp in timestamps %}
+    <li>
+      <a href="{{ urls.build(
+                      'list snapshots at time',
+                      {'date': day.strftime('%Y%m%d'), 'time': timestamp.strftime('%H%M')}
+                  ) }}">
+        {{ timestamp|format_datetime('%H:%M') }}
+      </a>
+    </li>
+  {% endfor %}
+</ol>
+{% endblock %}

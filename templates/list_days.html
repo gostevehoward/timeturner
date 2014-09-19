@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+<ol>
+  {% for day in days %}
+    <li>
+      <a href="{{ urls.build('list times on day', {'date': day.strftime('%Y%m%d')}) }}">
+        {{ day|format_datetime('%Y-%m-%d') }}
+      </a>
+    </li>
+  {% endfor %}
+</ol>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1> {{ timestamp }} &raquo; {{ hostname }} &raquo; {{ title }} </h1>
+<table class="snapshot-contents">
+    <tr>
+        {% for column in columns %}
+            <th>{{ column }}</th>
+        {% endfor %}
+    </tr>
+    {% for row in data_rows %}
+        <tr>
+            {% for element in row %}
+                <td>{{ element }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
